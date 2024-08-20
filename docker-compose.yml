@@ -1,5 +1,3 @@
-version: "3.7"
-
 services:
     # image project
     app:
@@ -13,19 +11,19 @@ services:
         depends_on:
             - redis
         networks:
-            - microsservice
+            - micro_emitente
 
     # nginx
     nginx:
         image: nginx:alpine
         restart: unless-stopped
         ports:
-            - "8102:80"
+            - "8002:80"
         volumes:
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
         networks:
-            - microsservice
+            - micro_emitente
 
     
     pgsql:
@@ -40,19 +38,13 @@ services:
         volumes:
               - ".:/var/www/html"
         networks:
-            - microsservice
+            - micro_emitente
         healthcheck:
             test: [ "CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}" ]
             retries: 3
             timeout: 5s
 
-    memcached:
-        image: 'memcached:alpine'
-        ports:
-            - '11211:11211'
-        networks:
-            - microsservice
-
+  
 
     # queue
     queue:
@@ -65,15 +57,15 @@ services:
             - redis
             - app
         networks:
-            - microsservice
+            - micro_emitente
 
     # redis
     redis:
         image: redis:latest
         networks:
-            - microsservice
+            - micro_emitente
 
 networks:
-    microsservice:
-        name:   microsservice
+    micro_emitente:
+        name:   micro_emitente
         driver: bridge

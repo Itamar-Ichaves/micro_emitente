@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api\NaturezaOperacao;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\NaturezaOpResource;
 use App\Services\NaturezaOperacaoService;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CreateNaturezaOpController extends Controller
 {
@@ -19,8 +21,13 @@ class CreateNaturezaOpController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $this->natOpService->CreateNaturezaOp($request);
-        //dd($request);
+       $natOp = $this->natOpService->CreateNaturezaOp($request);
+      
+        return response()->json([
+            'success' => true,
+            'message' => 'Categoria Criada com Sucesso',
+            'data' => new NaturezaOpResource($natOp)
+        ], Response::HTTP_CREATED);
        
     }
 }

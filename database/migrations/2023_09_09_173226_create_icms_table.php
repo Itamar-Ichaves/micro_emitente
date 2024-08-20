@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('icms', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
+            $table->uuid('token_company')->nullable();
             $table->string('codigo_icms');
             $table->string('desc_icms');
             $table->timestamps();

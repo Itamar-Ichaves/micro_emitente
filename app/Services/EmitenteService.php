@@ -20,9 +20,9 @@ public function __construct(
 
 function CreateEmitente($emitente)
 {
-   $this->emitenteRepository->createNewEmitente($emitente);
+  return  $this->emitenteRepository->createNewEmitente($emitente);
 
-  //dd($emitente);
+ 
 }
 
 function getEmitenteSpecific($uuid, $emitente) 

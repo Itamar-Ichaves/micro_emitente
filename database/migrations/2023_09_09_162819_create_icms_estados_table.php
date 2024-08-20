@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('icms_estados', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
             $table->string('uf_origem', 10);
             $table->string('uf_destino',10);
             $table->decimal('aliquota_origem',10,2);

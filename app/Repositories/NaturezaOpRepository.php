@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\NaturezaDaOperacao;
+use App\Models\NaturezaOp;
 use Illuminate\Support\Facades\DB;
 
 class NaturezaOpRepository
@@ -10,7 +11,7 @@ class NaturezaOpRepository
     protected $table;
     protected $repository;
 
-public function __construct(NaturezaDaOperacao $naturezaOp)
+public function __construct(NaturezaOp $naturezaOp)
 {
     $this->repository = $naturezaOp;
     $this->table = 'NaturezaDaOperacao';
@@ -18,25 +19,26 @@ public function __construct(NaturezaDaOperacao $naturezaOp)
 
 function createNewNaturezaOp($naturezaOp)
 {
-    
+   // dd($naturezaOp);
     $data = [
 
     'token_company' =>  $naturezaOp['token_company'],
-    'emitente_uuid' => $naturezaOp['emitente_uuid'],
+    'emitente' => $naturezaOp['emitente'],
     'titulo_interno' =>  $naturezaOp['titulo_interno' ],
-    'title' =>  $naturezaOp['title'],
+    'natureza_da_operacao' =>  $naturezaOp['natureza_da_operacao'],
     'tipo' =>  $naturezaOp['tipo'],
-    'finNfe' =>  $naturezaOp['fantasia'],
+    'finNfe' =>  $naturezaOp['finNfe'],
     'indPres' =>  $naturezaOp['indPres'],
-    'padrão' =>  $naturezaOp['padrão'],
+    'devolução'=> $naturezaOp['devolução'],
+    'padrão' =>  $naturezaOp['padrão']
 
     ];
+   // dd($data);
+   $cadastro_naturezaOp = $this->repository->create($data);
 
-  // $cadastro_naturezaOp = $this->repository->create($data);
+   return $cadastro_naturezaOp;
 
-  // return response()->json($cadastro_naturezaOp);
-
-   dd($data);
+  
 }
 
 

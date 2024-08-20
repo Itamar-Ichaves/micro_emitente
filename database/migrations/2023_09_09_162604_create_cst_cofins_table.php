@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('cst_cofins', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
             $table->integer('cst_cofins');
             $table->string('description');
             $table->string('tipo',1);

@@ -3,15 +3,14 @@
 namespace App\Providers;
 
 use App\Models\{
-    certificado_digital,
+    
     Emitente,
-    NaturezaDaOperacao
+    NaturezaOp
 
 };
 
 
 use App\Observers\{
-    CertificadoObserver,
     EmitenteObserver,
     NaturezaOperacaoObserver
 };
@@ -34,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Emitente::observe(EmitenteObserver::class);
-        certificado_digital::observe(CertificadoObserver::class);
-        NaturezaDaOperacao::observe(NaturezaOperacaoObserver::class);
+      
+        NaturezaOp::observe(NaturezaOperacaoObserver::class);
     }
 }

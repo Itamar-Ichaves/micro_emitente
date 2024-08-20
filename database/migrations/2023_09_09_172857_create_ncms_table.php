@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ncm', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
+            $table->uuid('token_company')->nullable();
             $table->string('cod_ncm');
             $table->string('nome_ncm');
             $table->timestamps();

@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Repositories;
-
-use App\Models\Certificado;
-use App\Models\certificado_digital;
+use App\Models\CertificadoDigital;
 use Illuminate\Support\Facades\DB;
 
 class CertificadoRepository
@@ -11,7 +9,7 @@ class CertificadoRepository
     protected $table;
     protected $repository;
 
-public function __construct(certificado_digital $certificado)
+public function __construct(CertificadoDigital $certificado)
 {
     $this->repository = $certificado;
     $this->table = 'certificado_digitals';
@@ -23,14 +21,22 @@ function salveNewCertificado($certificado)
     $data = [
 
     'token_company' =>  $certificado['token_company'],
+    'emitente' => $certificado['emitente'],
+    'certificado_nome_arquivo'=> $certificado['certificado_nome_arquivo'],
+    'cnpj'=> $certificado['cnpj'],
+    'serial'=> $certificado['serial'],
+    'inicio' => $certificado['inicio'],
+    'expiracao' => $certificado['expiracao'],
+    'identificado' => $certificado['identificado'],
+    'idctx' => $certificado['idctx']
     
     ];
 
-   // $cadastro_certificado = $this->repository->create($data);
+ 
+    $cadastro_certificado = $this->repository->create($data);
 
-   // return response()->json($cadastro_certificado);
+   return $cadastro_certificado;
 
-   dd($certificado);
 }
 
 

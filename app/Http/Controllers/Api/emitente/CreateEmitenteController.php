@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api\emitente;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EmitenteResource;
 use App\Services\EmitenteService;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CreateEmitenteController extends Controller
 {
@@ -20,10 +22,9 @@ class CreateEmitenteController extends Controller
     public function __invoke(Request $request)
     {
 
-     $this->emitenteService->CreateEmitente($request);
+     $emitente = $this->emitenteService->CreateEmitente($request->all());
 
-     
-
-      // dd($request);
+     return response()->json($emitente);
+    
     }
 }

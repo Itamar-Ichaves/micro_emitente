@@ -15,7 +15,7 @@ class EmitenteObserver
      */
     public function creating(Emitente $emitente)
     {
-               $emitente->uuid = Str::uuid();
+        $emitente->id = (string) Str::uuid();
     }
 
     /**

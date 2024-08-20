@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ibpts', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
             $table->string('ncm',15);
             $table->string('uf',2);
             $table->integer('ex');

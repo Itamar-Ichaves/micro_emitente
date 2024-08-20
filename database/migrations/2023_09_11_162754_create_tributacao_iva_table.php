@@ -12,14 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tributacao_iva', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('uuid');
-            $table->string('token_company');
-            $table->bigInteger('natureza_da_operacao_id')->unsigned();
-            $table->foreign('natureza_da_operacao_id')->references('id')->on('natureza_da_operacao');
-            
-            $table->bigInteger('tributacao_id')->unsigned();
-            $table->foreign('tributacao_id')->references('id')->on('tributacao');
+            $table->uuid('id');
+            $table->uuid('token_company');
+            $table->uuid('natureza_da_operacao_id')->unsigned();
+            $table->uuid('tributacao_id')->unsigned();
             $table->string('cstIcms',15);
             $table->string('uf_origem',10);
             $table->string('uf_destino',10);

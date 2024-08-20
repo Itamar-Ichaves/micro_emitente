@@ -18,11 +18,9 @@ public function __construct(Emitente $emitente)
 
 function createNewEmitente($emitente)
 {
-    
     $data = [
 
     'token_company' =>  $emitente['token_company'],
-    'time_zone' =>  $emitente['time_zone' ],
     'logo' =>  $emitente['logo'],
     'razao_social' =>  $emitente['razao_social'],
     'fantasia' =>  $emitente['fantasia'],

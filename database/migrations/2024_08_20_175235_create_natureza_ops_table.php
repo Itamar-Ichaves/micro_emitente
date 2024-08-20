@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('natureza_da_operacao', function (Blueprint $table) {
+        Schema::create('natureza_ops', function (Blueprint $table) {
             $table->uuid('id');
             $table->uuid('token_company');
             $table->uuid('emitente')->nullable();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('natureza_da_operacao');
+        Schema::dropIfExists('natureza_ops');
     }
 };

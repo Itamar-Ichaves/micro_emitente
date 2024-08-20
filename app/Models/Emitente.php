@@ -10,18 +10,14 @@ class Emitente extends Model
     use HasFactory;
 
     protected $fillable = [
-            'uuid',
             'token_company',
             'logo',
             'razao_social',
             'fantasia',
             'cnpj',
             'ie',
-            'certificado',
-
             'municipio',
             'uf',
-
             'logradouro',  
             'numero',  
             'bairro', 
